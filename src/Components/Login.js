@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosAuth from "../services/axiosinterceptor";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -9,15 +10,18 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:8000/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = () => {
+      return axiosAuth({
+        url: "/api/auth/login",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({ email, password }),
+      });
+    };
 
-    const json = await response.json();
+    const json = await response();
     console.log(json);
     if (json.success) {
       // Save The Auth token

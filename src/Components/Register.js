@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosAuth from "../services/axiosinterceptor";
 const Register = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -18,15 +19,18 @@ const Register = () => {
 
     const { name, email, password } = credentials;
 
-    const response = await fetch(`http://localhost:8000/api/auth/createuser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
+    const response = () => {
+      return axiosAuth({
+        url: "/api/auth/createuser",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({ name, email, password }),
+      });
+    };
 
-    const json = await response.json();
+    const json = await response();
     console.log(json);
 
     localStorage.setItem("token", json.authToken);
