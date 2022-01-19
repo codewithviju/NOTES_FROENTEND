@@ -4,6 +4,8 @@ import NoteContext from "./noteContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const isAuthenticated = localStorage.getItem("token") || false;
+
 const NoteState = (props) => {
   const HOST = "http://localhost:8000";
   const initialNotes = [];
@@ -98,7 +100,14 @@ const NoteState = (props) => {
   return (
     <>
       <NoteContext.Provider
-        value={{ notes, addNote, deleteNote, editNote, getNotes }}
+        value={{
+          notes,
+          addNote,
+          deleteNote,
+          editNote,
+          getNotes,
+          isAuthenticated,
+        }}
       >
         {props.children}
       </NoteContext.Provider>

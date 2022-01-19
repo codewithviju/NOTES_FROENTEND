@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../Context/notes/noteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "../Components/AddNote";
-import { useNavigate } from "react-router-dom";
+
 const Notes = () => {
-  const navigate = useNavigate();
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   const [input, setInput] = useState({
@@ -16,11 +15,7 @@ const Notes = () => {
   // Fetch All Notes Using UseEfect
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      getNotes();
-    } else {
-      navigate("/login");
-    }
+    getNotes();
   }, []);
 
   // Update Notes

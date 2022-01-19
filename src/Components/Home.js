@@ -1,10 +1,14 @@
+import Header from "./Header";
 import Notes from "./Notes";
 
 const Home = () => {
   return (
-    <div className="container mt-5">
-      <Notes />
-    </div>
+    <>
+      <Header />
+      <div className="container mt-5">
+        <Notes />
+      </div>
+    </>
   );
 };
 
