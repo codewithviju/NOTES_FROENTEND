@@ -8,7 +8,7 @@ const NoteItem = (props) => {
   // To Delete a Note
 
   return (
-    <div className="col-md-3" key={props.keyvalue}>
+    <div className="col-md-3" key={note._id}>
       <div className="card my-3" style={{ width: "18rem" }}>
         <div className="card-body">
           <h6 className="card-subtitle mb-2 text-muted">{note.title}</h6>

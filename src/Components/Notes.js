@@ -21,7 +21,7 @@ const Notes = () => {
     } else {
       navigate("/login");
     }
-  }, [getNotes, navigate]);
+  }, []);
 
   // Update Notes
 
