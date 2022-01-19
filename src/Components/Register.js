@@ -131,7 +131,7 @@ const Register = () => {
                         >
                           Already have an account?
                           <Link
-                            to="/register"
+                            to="/login"
                             style={{ color: "#393f81" }}
                             className="px-2"
                           >
